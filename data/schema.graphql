@@ -1,0 +1,38 @@
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Phone {
+  id: ID!
+  phoneId: String!
+  model: String!
+  image: String
+}
+
+type PhoneConnection {
+  pageInfo: PageInfo!
+  edges: [PhoneEdge]
+}
+
+type PhoneEdge {
+  node: Phone
+  cursor: String!
+}
+
+type Query {
+  node(id: ID!): Node
+  viewer: User
+}
+
+type User implements Node {
+  id: ID!
+  userId: String!
+  phones(after: String, first: Int, before: String, last: Int): PhoneConnection
+}
