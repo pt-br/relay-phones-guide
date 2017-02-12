@@ -113,6 +113,6 @@ const Root = new GraphQLObjectType({
  * Finally, we construct our schema (whose starting query type is the query
  * type we defined above) and export it.
  */
-export var Schema = new GraphQLSchema({
+export const Schema = new GraphQLSchema({
   query: Root,
 });
